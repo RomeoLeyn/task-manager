@@ -1,10 +1,16 @@
+@import url('https://fonts.cdnfonts.com/css/unbounded');
+
 .header {
-    background-color: #f8f9fa;
-    padding: 15px 30px;
+    background: rgb(235,244,255);
+    background: linear-gradient(90deg, rgba(235,244,255,1) 0%, rgba(255,255,255,1) 100%);
+    padding: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #007bff;
+    border-radius: 0 0 15px 15px;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 400;
 }
 
 .navbar {
@@ -15,8 +21,7 @@
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 18pt;
     color: #007bff;
     text-decoration: none;
 }
@@ -26,11 +31,22 @@
     gap: 20px;
 }
 
-.nav-links a {
+.nav-links a, .nav-links button {
     text-decoration: none;
-    color: #007bff;
-    padding: 10px 20px;
-    transition: color 0.3s ease;
+    color: white;
+    padding: 10px 25px;
+    transition: 0.3s ease;
+    outline: 0;
+    border: 0;
+    background: var(--blue);
+    border-radius: 5px;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 11pt;
+}
+
+.nav-links button:hover {
+    background-color: #222222;
+    cursor: pointer;
 }
 
 .nav-links a:hover {
