@@ -1,6 +1,13 @@
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 185px);
+}
+
 .form {
   background-color: #fff;
-  display: block;
+  width: min-content;
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -18,8 +25,8 @@
   position: relative;
 }
 
-.input-container input,
-.form button {
+.input-container input
+{
   outline: none;
   border: 1px solid #e5e7eb;
   margin: 8px 0;
@@ -29,14 +36,14 @@
   background-color: #fff;
   padding: 1rem;
   padding-right: 3rem;
-  font-size: 0.875rem;
+  font-size: 12pt;
   line-height: 1.25rem;
   width: 300px;
   border-radius: 0.5rem;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-.input-container span {
+.input-container i, .input-container span {
   display: grid;
   position: absolute;
   top: 0;
@@ -54,19 +61,21 @@
 }
 
 .submit {
-  display: block;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  background-color: #4F46E5;
-  color: #ffffff;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 500;
-  width: 100%;
-  border-radius: 0.5rem;
-  text-transform: uppercase;
+  margin-top: 0.5rem;
+  background-color: #007bff;
+    color: #fff;
+    border: none;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 15pt;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 8px;
+    transition: 0.25s ease;
+}
+
+.submit:hover {
+    background-color: #222222;
+    cursor: pointer;
 }
 
 .signup-link {
@@ -83,4 +92,27 @@
 .auth-btn,
 .submit {
   cursor: pointer;
+}
+
+.fa-eye, .fa-eye-slash {
+  transition: 0.25s ease;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.fa-eye:hover, .fa-eye-slash:hover {
+  cursor: pointer;
+  background: #e5e5e5;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  place-content: center;
+  border: 0;
+  outline: 0;
+  background: transparent;
 }

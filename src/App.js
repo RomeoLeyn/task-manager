@@ -10,8 +10,21 @@ import RegisterPage from "./page/auth/RegisterPage";
 import ProjectsPage from "./page/projects/ProjectsPage";
 import Project from "./components/project/Project";
 
+import { useEffect } from "react";
+
 
 function App() {
+
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css';
+    link.integrity = 'sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==';
+    link.crossOrigin = 'anonymous';
+    link.referrerPolicy = 'no-referrer';
+
+    document.head.appendChild(link);
+  }, []);
 
   return (
     <div className="App">

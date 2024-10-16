@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 3px solid #007bff;
+    border-bottom: 3px solid var(--blue);
     border-radius: 0 0 15px 15px;
     font-family: 'Unbounded', sans-serif;
     font-weight: 400;
@@ -22,7 +22,7 @@
 
 .logo {
     font-size: 18pt;
-    color: #007bff;
+    color: var(--blue);
     text-decoration: none;
 }
 
@@ -31,24 +31,42 @@
     gap: 20px;
 }
 
-.nav-links a, .nav-links button {
-    text-decoration: none;
-    color: white;
+.header-login, .header-register {
     padding: 10px 25px;
-    transition: 0.3s ease;
     outline: 0;
-    border: 0;
-    background: var(--blue);
-    border-radius: 5px;
     font-family: 'Unbounded', sans-serif;
     font-size: 11pt;
+    border-radius: 5px;
 }
 
-.nav-links button:hover {
+.nav-links a, .header-login {
+    text-decoration: none;
+    border: 0;
+    color: white;
+    transition: 0.3s ease;
+    background: var(--blue);
+}
+
+.header-login:hover {
     background-color: #222222;
     cursor: pointer;
 }
 
 .nav-links a:hover {
-    color: #0056b3;
+    color: var(--blue);
+}
+
+.header-register {
+    background: none;
+    position: relative;
+    color: var(--blue);
+    transition: 0.25s ease;
+    border: 2px solid var(--blue);
+}
+
+.header-register:hover {
+    cursor: pointer;
+    color: white;
+    border-color: var(--black);
+    background: var(--black);
 }

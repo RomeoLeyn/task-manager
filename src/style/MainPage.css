@@ -1,6 +1,7 @@
 body {
     background: rgb(218,255,255);
     background: linear-gradient(45deg, rgba(218,255,255,1) 0%, rgba(202,215,255,1) 30%, rgba(255,237,197,1) 100%);
+
 }
 
 :root {
@@ -60,7 +61,7 @@ div.text-container {
 }
 
 .text-container button.mainpage-register {
-    background-color: #007bff;
+    background: var(--blue);
     color: #fff;
     border: none;
     font-family: 'Unbounded', sans-serif;

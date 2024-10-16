@@ -10,8 +10,10 @@ export const login = async (email, password) => {
         });
 }
 
-export const register = async (email, password) => {
-    const { data } = await axios.post('http://localhost:3000/api/user/registration', { email, password })
+export const register = async (username, email, password) => {
+
+    const { data } = await axios.post('http://localhost:3000/api/user/registration', { username, email, password })
+    
         .then(response => {
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
