@@ -1,27 +1,46 @@
 .error-container {
     display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
+    /* justify-content: center; */
     height: 100vh;
-    background-color: #f8f9fa;
+    background-image: url("../../img/error401.png");
+    /* background-position: 25% 50%; */
+    background-position-y: 100%;
+    background-position-x: -20%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: #E3F6FF;
     color: #333;
     text-align: center;
 }
 
+.error-section {
+    margin-top: 23%;
+    margin-left: 2rem;
+    font-family: "Sofia Sans", sans-serif;
+}
+
 .error-title {
+    margin: 0 0 11rem;
     font-size: 3rem;
     font-weight: bold;
-    color: #dc3545;
+    color: white;
 }
 
 .error-message {
     font-size: 1.5rem;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .error-link {
     text-decoration: none;
+    display: inline-block;
     color: #007bff;
     font-size: 1.2rem;
     padding: 10px 20px;

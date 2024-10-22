@@ -1,14 +1,14 @@
 @import url('https://fonts.cdnfonts.com/css/unbounded');
 
 .header {
-    background: rgb(235,244,255);
-    background: linear-gradient(90deg, rgba(235,244,255,1) 0%, rgba(255,255,255,1) 100%);
-    padding: 30px;
+    background: rgb(235, 244, 255);
+    background: linear-gradient(90deg, rgba(235, 244, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 3px solid var(--blue);
-    border-radius: 0 0 15px 15px;
+    /* border-radius: 0 0 5px 5px; */
     font-family: 'Unbounded', sans-serif;
     font-weight: 400;
 }
@@ -21,25 +21,64 @@
 }
 
 .logo {
-    font-size: 18pt;
+    font-size: 14pt;
+    font-weight: 900;
+    display: inline-flex;
+    align-items: center;
     color: var(--blue);
     text-decoration: none;
+    border: 2px solid transparent;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.3s ease;
+    gap: 10px;
 }
 
-.nav-links {
+.logo i {
+    font-size: 16pt;
+}
+
+.logo:hover {
+    cursor: pointer;
+    border-color: var(--blue);
+    /* color: white; */
+    /* background: gray; */
+}
+
+.nav-start {
     display: flex;
     gap: 20px;
 }
 
-.header-login, .header-register {
-    padding: 10px 25px;
+.nav-end {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+    border-left: 2px solid var(--blue);
+    padding-left: 10px;
+}
+
+.header-login,
+.header-register,
+.header-create,
+.header-logout {
+    padding: 10px 15px;
     outline: 0;
-    font-family: 'Unbounded', sans-serif;
-    font-size: 11pt;
+    /* font-family: 'Unbounded', sans-serif; */
+    font-family: "Sofia Sans", sans-serif;
+    font-size: 14pt;
+    /* font-size: 11pt; */
     border-radius: 5px;
 }
 
-.nav-links a, .header-login {
+.nav-links a,
+.header-login,
+.header-logout {
     text-decoration: none;
     border: 0;
     color: white;
@@ -47,7 +86,19 @@
     background: var(--blue);
 }
 
-.header-login:hover {
+.header-logout {
+    border: 2px solid var(--black);
+    background: none;
+    color: var(--black)
+}
+
+.header-logout:hover {
+    background-color: var(--black);
+    color: white;
+}
+
+.header-login:hover,
+.header-logout:hover {
     background-color: #222222;
     cursor: pointer;
 }
@@ -56,17 +107,270 @@
     color: var(--blue);
 }
 
-.header-register {
+.header-register,
+.header-create {
     background: none;
     position: relative;
-    color: var(--blue);
     transition: 0.25s ease;
+}
+
+.header-register {
+    border: 2px solid var(--black);
+    color: var(--black);
+}
+
+.header-create {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     border: 2px solid var(--blue);
+    color: var(--blue);
+}
+
+.header-create i {
+    font-size: 18pt;
+}
+
+.header-register:hover, 
+.header-create:hover {
+    cursor: pointer;
+    color: white;
 }
 
 .header-register:hover {
-    cursor: pointer;
-    color: white;
     border-color: var(--black);
     background: var(--black);
+}
+
+.header-create:hover {
+    border-color: var(--blue);
+    background: var(--blue);
+}
+
+/* dropdown */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    font-family: "Sofia Sans", sans-serif;
+}
+
+.dropdown-btn {
+    background-color: #f0f0f0;
+    color: var(--blue);
+    font-family: "Sofia Sans", sans-serif;
+    font-size: 14pt;
+    border: 1px solid transparent;
+    border-bottom: none;
+    outline: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-btn:hover {
+    border-color:  var(--gray);
+    color: var(--black);
+    border-bottom: none;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-btn i {
+    font-size: 18pt;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    border-radius: 0 5px 5px 5px;
+    border: 1px solid var(--gray);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-btn {
+    border-color: var(--gray);
+    color: var(--black);
+    border-bottom: none;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-item {
+    padding: 5px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 560px;
+    max-height: 57px;
+    transition: 0.3s ease;
+}
+
+.dropdown-item>div {
+    padding: 5px 10px;
+}
+
+.dropdown-item:hover {
+    background-color: var(--gray);
+}
+
+
+.dropdown-item:first-of-type {
+    border-radius: 5px 5px 0 0;
+}
+
+.dropdown-item:last-of-type {
+    border-radius: 0 0 5px 5px;
+}
+
+.dropdown-project-icon,
+.dropdown-project-last-access {
+    border-radius: 5px;
+}
+
+
+.dropdown-item:not(:last-of-type) {
+    border-bottom: 1px solid var(--gray);
+}
+
+.dropdown-project-icon {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-project-icon i {
+    font-size: 24pt;
+}
+
+.dropdown-project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 150px;
+    width: 70%;
+}
+
+.dropdown-project-title {
+    font-weight: 900;
+    color: var(--black);
+    font-size: 14pt;
+}
+
+.dropdown-project-description {
+    font-size: 12pt;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    color: var(--black);
+    text-wrap: balance;
+}
+
+.no-projects {
+    padding: 10px;
+}
+
+.dropdown-project-last-access {
+    font-size: 12pt;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 22.5%;
+    border: 2px solid transparent;
+}
+
+.importance {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 10%; */
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+
+.importance i {
+    font-size: 24pt;
+}
+
+.dropdown-project-last-access i {
+    margin-right: 5px;
+    font-size: 18pt;
+}
+
+.header-profile {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+    padding: 2.5px 10px;
+    border: 2px solid var(--black);
+    border-radius: 5px;
+    color: var(--black);
+    transition: 0.25s ease;
+}
+
+.header-profile:hover {
+    background-color: var(--black);
+    color: white;
+    cursor: pointer;
+}
+
+.header-profile .user-name {
+    font-size: 14pt;
+    font-family: "Sofia Sans", sans-serif;
+    font-style: italic;
+    /* font-weight: bold; */
+}
+
+.header-profile .user-image {
+    width: 40px;
+    height: 40px;
+    background-image: url("../img/sentinel-avatar.jpg");
+    background-size: cover;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.nav-tools {
+    display: inline-flex;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.nav-tools .navbar-btn {
+    color: var(--blue);
+    transition: 0.25s ease;
+    border: none;
+    outline: none;
+    border: 2px solid var(--blue);
+    padding: 0 10px;
+    border-radius: 5px;
+    font-family: "Sofia Sans", sans-serif;
+    font-size: 14pt;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-tools .navbar-btn i {
+    font-size: 16pt;
+}
+
+.nav-tools .navbar-btn:hover {
+    background-color: var(--blue);
+    color: white;
+    cursor: pointer;
 }

@@ -1,0 +1,286 @@
+@import url('https://fonts.cdnfonts.com/css/unbounded');
+
+// Міксини для спільних стилів
+@mixin flex-center($justify: space-between, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin transition-ease($duration: 0.3s, $property: all, $ease: ease) {
+  transition: $duration $property $ease;
+}
+
+@mixin button-style($bg-color: var(--blue), $text-color: white) {
+  text-decoration: none;
+  border: 0;
+  color: $text-color;
+  background: $bg-color;
+  @include transition-ease();
+}
+
+@mixin hover-border-color($color) {
+  cursor: pointer;
+  border-color: $color;
+}
+
+// Основні стилі
+.header {
+  background: linear-gradient(90deg, rgba(235, 244, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  padding: 10px;
+  @include flex-center();
+  border-bottom: 3px solid var(--blue);
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 400;
+}
+
+.navbar {
+  @include flex-center();
+  width: 100%;
+}
+
+.logo {
+  font-size: 14pt;
+  font-weight: 900;
+  color: var(--blue);
+  padding: 10px;
+  border-radius: 5px;
+  gap: 10px;
+  @include flex-center(flex-start);
+  @include transition-ease();
+
+  i {
+    font-size: 16pt;
+  }
+
+  &:hover {
+    @include hover-border-color(var(--blue));
+  }
+}
+
+.nav-start, .nav-end {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-end {
+  align-items: stretch;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+  border-left: 2px solid var(--blue);
+  padding-left: 10px;
+}
+
+.header-login,
+.header-register,
+.header-create,
+.header-logout {
+  padding: 10px 15px;
+  font-family: "Sofia Sans", sans-serif;
+  font-size: 14pt;
+  border-radius: 5px;
+}
+
+.nav-links a,
+.header-login,
+.header-logout {
+  @include button-style();
+}
+
+.header-login:hover,
+.header-logout:hover {
+  background-color: #222222;
+}
+
+.nav-links a:hover {
+  color: var(--blue);
+}
+
+.header-register,
+.header-create {
+  background: none;
+  @include transition-ease(0.25s);
+
+  &:hover {
+    color: white;
+  }
+}
+
+.header-register {
+  border: 2px solid var(--black);
+  color: var(--black);
+
+  &:hover {
+    background: var(--black);
+  }
+}
+
+.header-create {
+  border: 2px solid var(--blue);
+  color: var(--blue);
+  gap: 5px;
+  @include flex-center(flex-start);
+
+  i {
+    font-size: 18pt;
+  }
+
+  &:hover {
+    background: var(--blue);
+  }
+}
+
+// Dropdown
+.dropdown {
+  position: relative;
+  display: inline-block;
+  font-family: "Sofia Sans", sans-serif;
+}
+
+.dropdown-btn {
+  background-color: #f0f0f0;
+  color: var(--blue);
+  font-size: 14pt;
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
+  gap: 5px;
+  @include flex-center();
+  @include transition-ease();
+
+  i {
+    font-size: 18pt;
+  }
+
+  &:hover {
+    @include hover-border-color(var(--gray));
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  border-radius: 0 5px 5px 5px;
+  border: 1px solid var(--gray);
+
+  .dropdown-item {
+    padding: 5px;
+    @include flex-center(space-between);
+    max-height: 57px;
+
+    &:hover {
+      background-color: var(--gray);
+    }
+
+    &:first-of-type {
+      border-radius: 5px 5px 0 0;
+    }
+
+    &:last-of-type {
+      border-radius: 0 0 5px 5px;
+    }
+
+    .dropdown-project-icon {
+      width: 10%;
+      @include flex-center();
+      
+      i {
+        font-size: 24pt;
+      }
+    }
+
+    .dropdown-project-info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 70%;
+
+      .dropdown-project-title {
+        font-weight: 900;
+        font-size: 14pt;
+        color: var(--black);
+      }
+
+      .dropdown-project-description {
+        font-size: 12pt;
+        color: var(--black);
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .dropdown-project-last-access {
+      font-size: 12pt;
+      color: var(--black);
+      width: 22.5%;
+      @include flex-center();
+    }
+  }
+
+  .dropdown:hover & {
+    display: block;
+  }
+}
+
+// Профіль
+.header-profile {
+  @include flex-center(flex-start);
+  gap: 10px;
+  padding: 2.5px 10px;
+  border: 2px solid var(--black);
+  border-radius: 5px;
+  color: var(--black);
+  @include transition-ease(0.25s);
+
+  &:hover {
+    background-color: var(--black);
+    color: white;
+  }
+
+  .user-name {
+    font-size: 14pt;
+    font-family: "Sofia Sans", sans-serif;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .user-image {
+    width: 40px;
+    height: 40px;
+    background-image: url("../img/sentinel-avatar.jpg");
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+// Інструменти
+.nav-tools {
+  @include flex-center();
+  gap: 10px;
+
+  .navbar-btn {
+    color: var(--blue);
+    padding: 0 10px;
+    border: 2px solid var(--blue);
+    border-radius: 5px;
+    font-size: 14pt;
+    gap: 5px;
+    @include flex-center();
+    @include transition-ease(0.25s);
+
+    &:hover {
+      background-color: var(--blue);
+      color: white;
+    }
+  }
+}

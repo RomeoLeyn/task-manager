@@ -20,9 +20,12 @@ const Main = () => {
         <div className="main-container">
             <section className="content">
                 <div className="text-container">
-                    <h1 className="title">Керуйте своїми проектами ефективно та злагоджено з <b>MyApp</b></h1>
+                    <h1 className="title">Керуйте своїми проектами ефективно та злагоджено з <b>BoardMaster</b></h1>
                     <span className="description">Організуйте завдання, команду й інструменти в одному місці. Стежте за прогресом, розставляйте пріоритети та виконуйте проекти швидше з нашим інтуїтивним інтерфейсом.</span>
-                    <button className="mainpage-register" onClick={() => navigate('/register')}>Зареєструватись</button>
+                    <div className="mainpage-buttons-container">
+                        <button className="mainpage-login" onClick={() => navigate('/login')}>Увійти</button>
+                        <button className="mainpage-register" onClick={() => navigate('/register')}>Зареєструватись</button>
+                    </div>
                 </div>
                 <div className="image-container">
                     <img src={image} alt="LOL" />

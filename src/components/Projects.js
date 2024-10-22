@@ -32,11 +32,40 @@ const Projects = () => {
   }, []);
 
   if (error) {
-    return <ErrorPage errorMessage={error} />;
+    return <ErrorPage errorMessage="Please, try to log in again" />;
   }
 
   return (
     <div className="project-list">
+      <div
+        className="project-card project-card-new"
+        style={{ borderTopColor: `black` }}
+      >
+        <div
+          className="project-header"
+          style={{ backgroundColor: `black`, color: `white` }}
+        >
+          <span className="project-title">CREATE NEW PROJECT</span>
+          <span
+            className="project-type"
+            style={{ background: `white`, color: `black` }}
+          >
+            <span className="project-type-icon">
+              <i class="fa-regular fa-square-plus"></i>
+            </span>
+          </span>
+        </div>
+        <div className="project-body">
+          <span className="project-description">
+          <i class="fa-solid fa-plus"></i>
+          </span>
+        </div>
+        <div
+          className="project-footer"
+        >
+          
+        </div>
+      </div>
       {projects.map((project) => {
         const color = randomColor();
         const textColor = isColorLight(color) ? "#000" : "#fff";
@@ -55,9 +84,13 @@ const Projects = () => {
                   className="project-type"
                   style={{ background: `#fff`, color: `${color}` }}
                 >
-                  {getProjectIcon("design")}
-                  <span className="last-updated-at">
-                    <b>1 hour ago</b>
+                  <span className="project-type-icon">
+                    {getProjectIcon("design")}
+                  </span>
+                  <span className="last-modified">
+                    last modified:
+                    <br />
+                    <span className="time">2 days ago</span>
                   </span>
                 </span>
               </div>
