@@ -16,10 +16,6 @@ export const Register = () => {
 
     const handleSubmitRegister = async (e) => {
         e.preventDefault();
-
-        console.log(formRef.current.userName.value);
-        console.log(formRef.current.email.value);
-        console.log(formRef.current.password.value);
         try {
             const response = await register(
                 formRef.current.userName.value,
@@ -28,7 +24,7 @@ export const Register = () => {
             );
             const token = localStorage.getItem('token');
             logined(token);
-            navigate('/');
+            navigate('/verification');
 
         } catch (error) {
             console.error('Registration failed', error);
@@ -44,7 +40,7 @@ export const Register = () => {
                 </div>
                 <div className="input-container">
                     <input placeholder="Enter email" type="email" name="email" />
-                    <i className="fa-solid fa-at" title="путін ПІДАРАС"></i>
+                    <i className="fa-solid fa-at"></i>
                 </div>
                 <div className="input-container">
                     <InputPasswordToggle id="password" name="password"/>

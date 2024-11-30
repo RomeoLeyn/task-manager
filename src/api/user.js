@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const login = async (email, password) => {
-    const { data } = await axios.post('http://localhost:3000/api/user/login', { email, password })
+    const { data } = await axios.post('http://localhost:3000/api/users/login', { email, password })
         .then(response => {
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
@@ -10,9 +10,9 @@ export const login = async (email, password) => {
         });
 }
 
-export const register = async (username, email, password) => {
+export const register = async (username, firstname, lastname, email, password) => {
 
-    const { data } = await axios.post('http://localhost:3000/api/user/registration', { username, email, password })
+    const { data } = await axios.post('http://localhost:3000/api/users/register', { username, firstname, lastname, email, password })
     
         .then(response => {
             if (response.data.token) {

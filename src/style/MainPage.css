@@ -1,17 +1,16 @@
 body {
-    background: rgb(218,255,255);
-    background: linear-gradient(45deg, rgba(218,255,255,1) 0%, rgba(202,215,255,1) 30%, rgba(255,237,197,1) 100%);
-
-}
-
-:root {
-    --blue: #007bff;
+    /* background: rgb(218,255,255);
+    background: linear-gradient(45deg, rgba(218,255,255,1) 0%, rgba(202,215,255,1) 30%, rgba(255,237,197,1) 100%); */
+    /* background-image: url("../img/main-background.jpg"); */
+    /*     background-image: url("../img/main-background3.jpg"); */
+    background-image: url("../img/main-background-rev.jpg");
+    background-size: cover;
 }
 
 html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: var(--blue) #f8f9fa;
+    scrollbar-color: var(--primary) #f8f9fa;
 }
 
 @import url('https://fonts.cdnfonts.com/css/sofia-sans');
@@ -23,7 +22,7 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 67px);
+    height: calc(100vh - 70px);
     text-align: center;
 }
 
@@ -52,6 +51,7 @@ div.text-container {
     font-weight: 400;
     letter-spacing: -0.1rem;
     margin: 0;
+    color: var(--light);
 }
 
 .text-container span.description {
@@ -60,6 +60,7 @@ div.text-container {
     font-weight: 400;
     text-wrap: balance;
     text-align: left;
+    color: var(--light);
 }
 
 .text-container .mainpage-buttons-container {
@@ -71,9 +72,13 @@ div.text-container {
 }
 
 .text-container button.mainpage-login {
-    background: var(--blue);
-    color: #fff;
-    border: none;
+    /* background: var(--primary); */
+    background: none;
+    border: 2px solid var(--black);
+    /* background: #fff; */
+    /* color: #fff; */
+    color: #000;
+    /* border: none; */
     font-family: 'Unbounded', sans-serif;
     font-size: 16pt;
     padding: 15px;
@@ -83,8 +88,10 @@ div.text-container {
 
 .text-container button.mainpage-register {
     background: none;
-    border: 2px solid var(--black);
-    color: var(--black);
+    /* border: 2px solid var(--black); */
+    border: 2px solid white;
+    color: white;
+    /* color: var(--black); */
     font-family: 'Unbounded', sans-serif;
     font-size: 16pt;
     padding: 15px;
@@ -93,13 +100,17 @@ div.text-container {
 }
 
 .text-container button.mainpage-login:hover {
-    background-color: #222222;
+    background-color: #000;
+    color: #fff;
     cursor: pointer;
 }
 
 .text-container button.mainpage-register:hover {
-    background-color: var(--black);
-    color: #fff;
+    /* background-color: var(--black); */
+    background-color: white;
+
+    /* color: #fff; */
+    color: black;
     cursor: pointer;
 }
 

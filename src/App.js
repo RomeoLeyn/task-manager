@@ -11,6 +11,7 @@ import ProjectsPage from "./page/projects/ProjectsPage";
 import Project from "./components/project/Project";
 
 import { useEffect } from "react";
+import VerificationPage from "./page/auth/VerificationPage";
 
 
 function App() {
@@ -43,6 +44,8 @@ function App() {
             <Route path="/login" element={<Auth />} />
 
             <Route path="/register" element={<RegisterPage />} />
+
+            <Route path="/verification" element={<VerificationPage />} />
 
             <Route path="*" element={<div>Page not found</div>} />
 

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import '../style/MainPage.css';
+import '../style/colorTheme.css';
 import { useEffect } from "react";
 
 import image from "../img/mainpage.png";
@@ -23,8 +24,8 @@ const Main = () => {
                     <h1 className="title">Керуйте своїми проектами ефективно та злагоджено з <b>BoardMaster</b></h1>
                     <span className="description">Організуйте завдання, команду й інструменти в одному місці. Стежте за прогресом, розставляйте пріоритети та виконуйте проекти швидше з нашим інтуїтивним інтерфейсом.</span>
                     <div className="mainpage-buttons-container">
-                        <button className="mainpage-login" onClick={() => navigate('/login')}>Увійти</button>
-                        <button className="mainpage-register" onClick={() => navigate('/register')}>Зареєструватись</button>
+                        <button className="mainpage-login" onClick={() => navigate('/login')}>Login</button>
+                        <button className="mainpage-register" onClick={() => navigate('/register')}>Register</button>
                     </div>
                 </div>
                 <div className="image-container">

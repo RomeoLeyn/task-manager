@@ -1,9 +1,3 @@
-:root {
-    --black: #141E1D;
-    --gray: #CCD4DD;
-    --primary: #446063;
-}
-
 .page {
     display: flex;
     flex-direction: column;
@@ -14,8 +8,10 @@
     
     /*     background: rgb(235,244,255);
     background: linear-gradient(45deg, rgba(235,244,255,1) 0%, rgba(68,96,99,1) 100%); */
-    background: rgb(218,255,255);
-    background: linear-gradient(45deg, rgba(218,255,255,1) 0%, rgba(202,215,255,1) 50%, rgba(255,237,197,1) 100%); 
+    /* background: rgb(218,255,255);
+    background: linear-gradient(45deg, rgba(218,255,255,1) 0%, rgba(202,215,255,1) 50%, rgba(255,237,197,1) 100%);  */
+    background-image: url("../../img/main-background3.jpg");
+    background-size: cover;
     min-height: calc(100vh - 182px);
 }
 
@@ -37,6 +33,8 @@
     /* border-top: 3px solid #141E1D;
     border-bottom: 3px solid #141E1D; */
     width: 100%;
+    height: calc(100vh - 70.6px);
+
     border-radius: 15px;
     padding-bottom: 20px;
 }
@@ -44,7 +42,8 @@
 .page-title {
     font-size: 32pt;
     font-family: "Sofia Sans", sans-serif;
-    color: #333;
+    /* color: #333; */
+    color: var(--black);
     text-align: center;
     width: 100%;
     margin: 1.5rem 0;
@@ -52,7 +51,7 @@
 
 .add-project-btn {
     font-family: "Sofia Sans", sans-serif;
-    background-color: #007bff;
+    background-color: var(--primary);
     color: #fff;
     border: none;
     font-size: 16pt;

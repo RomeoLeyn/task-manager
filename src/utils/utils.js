@@ -74,3 +74,25 @@ export const isColorLight = (color) => {
   const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
   return brightness > 150;
 };
+
+export const getErrorImage = (errorStatusCode) => {
+  const defaultPath = "../../img/";
+  console.log(errorStatusCode);
+  
+  switch (errorStatusCode) {
+    case "400":
+      return defaultPath + "error400.png";
+    case "401":
+      return defaultPath + "error401.png";
+    case "403":
+      return defaultPath + "error403.png";
+    case "404":
+      return defaultPath + "error404.png";
+    case "500":
+      return defaultPath + "error500.png";
+    case "503":
+      return defaultPath + "error503.png";
+    default:
+      return defaultPath + "errorUndefined.png";
+  }
+}

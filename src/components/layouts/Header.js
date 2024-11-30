@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 
-import "../style/Header.css";
+import "./Header.scss";
 
 import { useNavigate } from "react-router-dom";
-import { getProjectIcon, isColorLight } from "../utils/utils";
-
-import avatarUrl from "../img/sentinel-avatar.jpg";
+import { getProjectIcon, isColorLight } from "../../utils/utils";
+import { useAuth } from "../../hooks/useAuth";
+import avatarUrl from "../../img/avatar.png";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
+  
   return (
     <header className="header">
       <nav className="navbar">
@@ -275,24 +277,29 @@ const Header = () => {
           </div>
           <button className="header-create" onClick={() => navigate("/login")}>
             Create
-            <i class="fa-solid fa-folder-plus"></i>
+            <i className="fa-solid fa-folder-plus"></i>
           </button>
         </div>
         <div className="nav-end">
           <div className="nav-tools">
             <button className="navbar-btn header-search">
-              {/* Search */}
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i className="fa-solid fa-magnifying-glass"></i>
             </button>
             <button className="navbar-btn header-notifications">
-              <i class="fa-regular fa-bell"></i>
+              <i className="fa-regular fa-bell"></i>
+            </button>
+            <button className="navbar-btn header-info">
+              <i className="fa-regular fa-circle-question"></i>
+            </button>
+            <button className="navbar-btn header-settings">
+            <i className="fa-solid fa-gear"></i>
             </button>
           </div>
           {
             <div className="nav-links">
               <button
                 className="navbar-btn header-logout"
-                // onClick={() => navigate("/logout")}
+                onClick={logout}
               >
                 Log out
               </button>
@@ -300,25 +307,13 @@ const Header = () => {
                 className="navbar-btn header-profile"
                 onClick={() => navigate("/profile")}
               >
-                <span className="user-name">DekronPrime</span>
-                <div className="user-image"></div>
+                <span className="user-name">{user ? user.username : "Anonymous"}</span>
+                <div 
+                className="user-image" 
+                style={{ backgroundImage: `url(${user?.avatarUrl || avatarUrl})` }}></div>
               </button>
-              {/*             <button
-              className="navbar-btn header-login"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </button>
-            <button
-              className="navbar-btn header-register"
-              onClick={() => navigate("/register")}
-            >
-              Register
-            </button> */}
             </div>
           }
-          {/*           {<div className="nav-profile">
-          </div>} */}
         </div>
       </nav>
     </header>
