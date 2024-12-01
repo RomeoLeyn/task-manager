@@ -9,7 +9,7 @@ const Project = () => {
 
     const getProject = async () => {
         console.log(projectId);
-        const response = await api.get(`/api/projects/id/${projectId}`);
+        const response = await api.get(`/api/projects/${projectId}/`);
         setProject(response.data);
         console.log(response.data);
     }

@@ -15,7 +15,7 @@ export const LayoutComponent = () => {
                 {user !== null ?<Header /> : <DefaultHeader /> }
                 <div className="content"> <Outlet /> </div>
                 {/* {user !== null ? <Footer /> : null} */}
-                <Footer />
+                {user !== null ? null : <Footer />} 
             </div>
         </>
     )

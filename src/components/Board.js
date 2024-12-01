@@ -18,7 +18,7 @@ export const Board = () => {
     const fetchTasksFromDB = async () => {
         try {
             console.log(projectId);
-            const response = await api.get(`/api/tasks/project/tasks/${projectId}`)
+            const response = await api.get(`/api/tasks/${projectId}`)
             setTasks(response.data);
             console.log(response.data);
         } catch (error) {

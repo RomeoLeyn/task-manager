@@ -12,6 +12,7 @@
     background: linear-gradient(45deg, rgba(218,255,255,1) 0%, rgba(202,215,255,1) 50%, rgba(255,237,197,1) 100%);  */
     background-image: url("../../img/main-background3.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
     min-height: calc(100vh - 182px);
 }
 
@@ -33,10 +34,10 @@
     /* border-top: 3px solid #141E1D;
     border-bottom: 3px solid #141E1D; */
     width: 100%;
-    height: calc(100vh - 70.6px);
+    min-height: calc(100vh - 70.6px);
 
     border-radius: 15px;
-    padding-bottom: 20px;
+    padding-bottom: 3rem;
 }
 
 .page-title {

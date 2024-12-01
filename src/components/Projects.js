@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import api from "../api/config";
 import { Link } from "react-router-dom";
 import ErrorPage from "./Error/ErrorPage";
-import { getProjectIcon, isColorLight } from "../utils/utils";
+import { freezeWindow, getProjectIcon, getRandomColor, isColorLight, unfreezeWindow } from "../utils/utils";
 import avatarImg from "../img/avatar.png";
 
 import { formatDistanceToNowStrict } from "date-fns";
 
 import "../style/ProjectsLists.css";
 import CreateProject from "./modal/CreateProject";
+import { fr } from "date-fns/locale";
+import randomColor from "randomcolor";
 
 const predefinedColors = [
   "#FF5733", // яскравий помаранчевий
@@ -49,8 +51,15 @@ const Projects = () => {
   const [error, setError] = useState(null);
   const [usedColors, setUsedColors] = useState(new Set());
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+  const openModal = () => {
+    freezeWindow();
+    setModalOpen(true);  
+  }
+  const closeModal = () => {
+    // document.forms["create-project-form"].reset();
+    unfreezeWindow();
+    setModalOpen(false);
+  }
 
   // Функція для отримання всіх проектів та їх кольорів
   const getProjects = async () => {
@@ -77,8 +86,9 @@ const Projects = () => {
     return availableColors[Math.floor(Math.random() * availableColors.length)];
   }; */
 
-  const handleCreateProject = (projectData) => {
-    setProjects((prev) => [...prev, projectData]);
+  const handleCreateProject = () => {
+    getProjects();
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -86,6 +96,7 @@ const Projects = () => {
   }, []);
 
   if (error) {
+    freezeWindow();
     return (
       <ErrorPage
         errorMessage="Please, try to log in again"
@@ -144,7 +155,7 @@ const Projects = () => {
                     style={{ background: `#fff`, color: project.color }}
                   >
                     <span className="project-type-icon">
-                      {getProjectIcon(project.category.toLocaleLowerCase())}
+                      {getProjectIcon(project.category)}
                     </span>
                     <span className="last-modified">
                       last modified:
@@ -192,7 +203,9 @@ const Projects = () => {
           );
         })}
       </div>
-        <CreateProject isOpen={isModalOpen}
+        <CreateProject 
+        isOpen={isModalOpen} 
+        randColor={getRandomColor()}
         onClose={closeModal}
         onSubmit={handleCreateProject}/>
     </>

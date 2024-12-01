@@ -5,6 +5,11 @@ body {
     /*     background-image: url("../img/main-background3.jpg"); */
     background-image: url("../img/main-background-rev.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body.frozen {
+    overflow: hidden;
 }
 
 html {

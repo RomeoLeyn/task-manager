@@ -1,69 +1,75 @@
+import randomColor from "randomcolor";
+
 export const getProjectIcon = (type) => {
   switch (type) {
-    case "development":
+    case "DEVELOPMENT":
       return <i className="fa-solid fa-code"></i>;
-    case "design":
+    case "DESIGN":
       return <i className="fas fa-paint-brush"></i>;
-    case "marketing":
+    case "MARKETING":
       return <i className="fas fa-bullhorn"></i>;
-    case "finance":
+    case "FINANCE":
       return <i className="fas fa-chart-line"></i>;
-    case "analytics":
+    case "ANALYTICS":
       return <i className="fas fa-chart-bar"></i>;
-    case "education":
+    case "EDUCATION":
       return <i className="fas fa-graduation-cap"></i>;
-    case "sales":
+    case "SALES":
       return <i className="fas fa-shopping-cart"></i>;
-    case "social_media":
+    case "SOCIAL_MEDIA":
       return <i className="fas fa-share-alt"></i>;
-    case "content_management":
+    case "CONTENT_MANAGEMENT":
       return <i className="fas fa-file-alt"></i>;
-    case "innovation":
+    case "INNOVATION":
       return <i className="fas fa-lightbulb"></i>;
-    case "customer_support":
+    case "CUSTOMER_SUPPORT":
       return <i className="fas fa-headset"></i>;
-    case "health_fitness":
+    case "HEALTH_FITNESS":
       return <i className="fas fa-heartbeat"></i>;
-    case "logistics":
+    case "LOGISTICS":
       return <i className="fas fa-truck"></i>;
-    case "occupational_safety":
+    case "OCCUPATIONAL_SAFETY":
       return <i className="fas fa-shield-alt"></i>;
-    case "sustainability":
+    case "SUSTAINABILITY":
       return <i className="fas fa-leaf"></i>;
-    case "project_management":
+    case "PROJECT_MANAGEMENT":
       return <i className="fas fa-tasks"></i>;
-    case "legal":
+    case "LEGAL":
       return <i className="fas fa-gavel"></i>;
-    case "real_estate":
+    case "REAL_ESTATE":
       return <i className="fas fa-building"></i>;
-    case "arts_culture":
+    case "ARTS_CULTURE":
       return <i className="fas fa-theater-masks"></i>;
-    case "travel":
+    case "TRAVEL":
       return <i className="fas fa-plane"></i>;
-    case "fashion":
+    case "FASHION":
       return <i className="fas fa-tshirt"></i>;
-    case "engineering":
+    case "ENGINEERING":
       return <i className="fas fa-wrench"></i>;
-    case "photography":
+    case "PHOTOGRAPHY":
       return <i className="fas fa-camera"></i>;
-    case "video_production":
+    case "VIDEO_PRODUCTION":
       return <i className="fas fa-video"></i>;
-    case "research_development":
+    case "RESEARCH_DEVELOPMENT":
       return <i className="fas fa-flask"></i>;
-    case "cybersecurity":
+    case "CYBERSECURITY":
       return <i className="fas fa-lock"></i>;
-    case "events":
+    case "EVENTS":
       return <i className="fas fa-calendar-alt"></i>;
-    case "charity":
+    case "CHARITY":
       return <i className="fas fa-hands-helping"></i>;
-    case "automotive":
+    case "AUTOMOTIVE":
       return <i className="fas fa-car"></i>;
-    case "food":
+    case "FOOD":
       return <i className="fas fa-utensils"></i>;
     default:
       return <i className="fas fa-briefcase"></i>;
   }
 };
+
+export const getRandomColor = () => {
+  return randomColor();
+}
 
 export const isColorLight = (color) => {
   const rgb = parseInt(color.slice(1), 16);
@@ -95,4 +101,12 @@ export const getErrorImage = (errorStatusCode) => {
     default:
       return defaultPath + "errorUndefined.png";
   }
+}
+
+export const freezeWindow = () => {
+  document.body.classList.add("frozen");
+}
+
+export const unfreezeWindow = () => {
+  document.body.classList.remove("frozen");
 }

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./ErrorPage.scss";
 
 import error401img from "../../img/error401.png";
-import { getErrorImage } from "../../utils/utils";
+import { getErrorImage, unfreezeWindow } from "../../utils/utils";
 
 // console.log(getErrorImage(401));
 
@@ -25,7 +25,7 @@ const ErrorPage = ({ errorMessage, errorAction, errorStatus, errorTitle }) => {
             <p className="error-message">
               {errorMessage || "An unexpected error occurred."}
             </p>
-            <Link to="/login" className="error-link">
+            <Link to="/login" className="error-link" onClick={unfreezeWindow}>
               {errorAction || "Go back to login page"}
             </Link>
           </div>

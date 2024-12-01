@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function TogglePasswordField({ id, name }) {
+function TogglePasswordField({ id, name, placeholder }) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -15,7 +15,7 @@ function TogglePasswordField({ id, name }) {
         className='password-input'
         name={name}
         type={isPasswordVisible ? 'text' : 'password'}
-        placeholder="Enter password..."
+        placeholder={placeholder}
         required
       />
       <button

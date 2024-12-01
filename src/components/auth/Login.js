@@ -36,8 +36,8 @@ const Login = () => {
           ref={formRef}
           onSubmit={handleSubmitLogin}
         >
-          <p className="form-title">Увійти</p>
-          <span>Введіть наступні дані для входу</span>
+          <p className="form-title">Log In</p>
+          <span>Fill in the following fields to log in</span>
           <div className="input-container">
             <div className="form-container">
               <input
@@ -45,7 +45,7 @@ const Login = () => {
                 className="password-input"
                 name="email"
                 type="text"
-                placeholder="example@gmail.com"
+                placeholder="Enter email..."
                 required
               />
               <button
@@ -53,26 +53,25 @@ const Login = () => {
                 // onClick={togglePasswordVisibility}
                 className={`toggle-btn toggle-email`}
               >
-                <i class="fa-solid fa-question"></i>
+                {/* <i class="fa-solid fa-question"></i> */}
+                <i className="fa-solid fa-at"></i>
               </button>
             </div>
-            {/* <input placeholder="example@gmail.com" type="text" name="email" /> */}
-            {/* <i className="fa-solid fa-at"></i> */}
           </div>
           <div className="input-container">
-            <InputPasswordToggle id="login-password" name="password" />
+            <InputPasswordToggle id="login-password" name="password" placeholder="Enter password..." />
           </div>
           <button className="submit" type="submit">
-            Вхід
+            Log In
           </button>
           {<p className="signup-link">
-            Немає акаунта?
+            Can not log in?
           </p>}
         </form>
       </div>
       <section className="redirect-container">
-        <h5 className="redirect-text">Уперше в BoardMaster?</h5>
-        <Link className="redirect-link" to={"/register" }>Зареєструватись</Link>
+        <h5 className="redirect-text">First time on BoardMaster?</h5>
+        <Link className="redirect-link" to={"/register" }>Sign Up</Link>
       </section>
     </>
   );
