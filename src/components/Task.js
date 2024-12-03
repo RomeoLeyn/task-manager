@@ -1,8 +1,9 @@
 import React from 'react';
 
 import '../style/Task.css';
+import { getTaskPriorityColor } from '../utils/utils';
 
-export const Task = ({ title, description, user }) => {
+export const Task = ({ title, priority }) => {
 
 
     const handleClickAssigneToMe = () => {
@@ -14,25 +15,13 @@ export const Task = ({ title, description, user }) => {
     }
 
     return (
-        <div className='task-container'>
+        <div className='task-container' style={{ borderLeftColor: getTaskPriorityColor(priority)}}>
 
             <div className='task-title'>
-                <p> <strong>{title}</strong> </p>
+                {title}
             </div>
 
             <div className="task-card">
-
-                <p><strong>Task description:</strong> {description}</p>
-                <p><strong>Assigned to:</strong> {user}</p>
-            </div>
-
-            <div className='buttons'>
-                <div className='assigned-btn'>
-                    <button onClick={handleClickAssigneToMe}>assigned to me</button>
-                </div>
-                <div className='change-status-btn'>
-                    <button onClick={handleClickChangeStatus}>change status</button>
-                </div>
             </div>
 
         </div>

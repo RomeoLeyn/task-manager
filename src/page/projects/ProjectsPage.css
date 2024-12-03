@@ -37,7 +37,7 @@
     min-height: calc(100vh - 70.6px);
 
     border-radius: 15px;
-    padding-bottom: 3rem;
+    /* padding-bottom: 3rem; */
 }
 
 .page-title {

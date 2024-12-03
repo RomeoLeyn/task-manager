@@ -31,13 +31,13 @@ const DefaultHeader = () => {
               className="navbar-btn header-login"
               onClick={() => navigate("/login")}
             >
-              Login
+              Log In
             </button>
             <button
               className="navbar-btn header-register"
               onClick={() => navigate("/register")}
             >
-              Register
+              Sign Up
             </button>
             </div>
           }

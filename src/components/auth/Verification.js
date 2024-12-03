@@ -39,7 +39,7 @@ export const Verification = () => {
             resend it.
             </p>
             <div className="resend-container">
-            <i class="fa-solid fa-arrows-rotate"></i>
+            <i className="fa-solid fa-arrows-rotate"></i>
             <button onClick={handleResend} className="resend-button">
                 Resend Verification Email
             </button>

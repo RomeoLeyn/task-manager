@@ -3,6 +3,7 @@ import { Task } from './Task';
 
 import '../style/Column.css';
 import { addTask } from '../api/task';
+import { getColumnIcon } from '../utils/utils';
 
 const data = {
     "title": "Notification",
@@ -17,7 +18,7 @@ const data = {
 
 
 
-const Column = ({ title, tasks }) => {
+const Column = ({ title, id, tasks }) => {
 
     const handleClickAddTask = async () => {
         // const response = await addTask({title, description: "description", projectId: 1, assignedTo: 1});
@@ -29,14 +30,16 @@ const Column = ({ title, tasks }) => {
 
     return (
         <div className="column">
-            <div className='task'>
-                <h3>{title}</h3>
+            <div className='column-header'>
+                <h3 className="column-title">{title} {getColumnIcon(id)}</h3>
+            </div>
+            <div className="column-body">
                 {tasks.map(task => (
-                    <Task key={task.id} title={task.title} description={task.description} user={task.user.username} />
+                    <Task key={task.id} title={task.title} description={task.description} user={task.createdByUser.username} priority={task.priority} />
                 ))}
             </div>
-            <div>
-                <button onClick={handleClickAddTask}>Add task</button>
+            <div className="column-footer">
+                <button onClick={handleClickAddTask}><i className="fa-solid fa-plus"></i>Add task</button>
             </div>
         </div>
     );

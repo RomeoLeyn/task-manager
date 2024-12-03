@@ -53,7 +53,7 @@ const Login = () => {
                 // onClick={togglePasswordVisibility}
                 className={`toggle-btn toggle-email`}
               >
-                {/* <i class="fa-solid fa-question"></i> */}
+                {/* <i className="fa-solid fa-question"></i> */}
                 <i className="fa-solid fa-at"></i>
               </button>
             </div>

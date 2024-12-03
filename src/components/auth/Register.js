@@ -50,11 +50,11 @@ export const Register = () => {
                 type="button"
                 className={`toggle-btn toggle-email`}
               >
-                <i class="fa-solid fa-question"></i>
+                <i className="fa-solid fa-question"></i>
               </button>
             </div>
           </div>
-          <div className="input-container">
+          {/* <div className="input-container">
             <div className="form-container">
               <input
                 id="register-firstname"
@@ -68,7 +68,7 @@ export const Register = () => {
                 type="button"
                 className={`toggle-btn toggle-email`}
               >
-                <i class="fa-solid fa-question"></i>
+                <i className="fa-solid fa-question"></i>
               </button>
             </div>
           </div>
@@ -86,10 +86,10 @@ export const Register = () => {
                 type="button"
                 className={`toggle-btn toggle-email`}
               >
-                <i class="fa-solid fa-question"></i>
+                <i className="fa-solid fa-question"></i>
               </button>
             </div>
-          </div>
+          </div> */}
           <div className="input-container">
             <div className="form-container">
               <input
@@ -104,7 +104,7 @@ export const Register = () => {
                 type="button"
                 className={`toggle-btn toggle-email`}
               >
-                <i class="fa-solid fa-question"></i>
+                <i className="fa-solid fa-question"></i>
               </button>
             </div>
           </div>

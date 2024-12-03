@@ -24,8 +24,8 @@ const Main = () => {
                     <h1 className="title">Керуйте своїми проектами ефективно та злагоджено з <b>BoardMaster</b></h1>
                     <span className="description">Організуйте завдання, команду й інструменти в одному місці. Стежте за прогресом, розставляйте пріоритети та виконуйте проекти швидше з нашим інтуїтивним інтерфейсом.</span>
                     <div className="mainpage-buttons-container">
-                        <button className="mainpage-login" onClick={() => navigate('/login')}>Login</button>
-                        <button className="mainpage-register" onClick={() => navigate('/register')}>Register</button>
+                        <button className="mainpage-login" onClick={() => navigate('/login')}>Log In</button>
+                        <button className="mainpage-register" onClick={() => navigate('/register')}>Sign Up</button>
                     </div>
                 </div>
                 <div className="image-container">

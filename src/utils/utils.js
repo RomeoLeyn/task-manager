@@ -110,3 +110,31 @@ export const freezeWindow = () => {
 export const unfreezeWindow = () => {
   document.body.classList.remove("frozen");
 }
+
+export const getTaskPriorityColor = (priority) => {
+  switch (priority) {
+    case "low":
+      return "green";
+    case "medium":
+      return "gold";
+    case "high":
+      return "red";
+    default:
+      return "blue";
+  }
+}
+
+export const getColumnIcon = (id) => {
+  switch (id) {
+    case "todo":
+      return <i className="fas fa-tasks"></i>;
+    case "in-progress":
+      return <i className="fas fa-spinner"></i>;
+    case "in-review":
+      return <i className="fas fa-edit"></i>;
+    case "done":
+      return <i className="fas fa-check"></i>;
+    default:
+      return <i className="fas fa-tasks"></i>;
+  }
+}

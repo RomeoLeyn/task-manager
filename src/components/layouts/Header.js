@@ -16,12 +16,12 @@ const Header = () => {
       <nav className="navbar">
         <div className="nav-start">
           <Link to="/" className="logo">
-            <i class="fa-solid fa-table-columns"></i>
+            <i className="fa-solid fa-table-columns"></i>
             <span className="name">BoardMaster</span>
           </Link>
           <div className="dropdown">
             <button className="dropdown-btn">
-              Recent<i class="fa-solid fa-clock-rotate-left"></i>
+              Recent<i className="fa-solid fa-clock-rotate-left"></i>
             </button>
             <div className="dropdown-content">
               {/* {recentProjects.length > 0 ? (
@@ -53,7 +53,7 @@ const Header = () => {
                     color: "black",
                   }}
                 >
-                  <i class="fa-solid fa-clock"></i>
+                  <i className="fa-solid fa-clock"></i>
                   <b>1 min ago</b>
                 </div>
               </Link>
@@ -87,7 +87,7 @@ const Header = () => {
                     color: "black",
                   }}
                 >
-                  <i class="fa-solid fa-clock"></i>
+                  <i className="fa-solid fa-clock"></i>
                   <b>5 min ago</b>
                 </div>
               </Link>
@@ -121,7 +121,7 @@ const Header = () => {
                     color: "black",
                   }}
                 >
-                  <i class="fa-solid fa-clock"></i>
+                  <i className="fa-solid fa-clock"></i>
                   <b>15 min ago</b>
                 </div>
               </Link>
@@ -154,7 +154,7 @@ const Header = () => {
                     color: "black",
                   }}
                 >
-                  <i class="fa-solid fa-clock"></i>
+                  <i className="fa-solid fa-clock"></i>
                   <b>2 hours ago</b>
                 </div>
               </Link>
@@ -187,7 +187,7 @@ const Header = () => {
                     color: "black",
                   }}
                 >
-                  <i class="fa-solid fa-clock"></i>
+                  <i className="fa-solid fa-clock"></i>
                   <b>1 day ago</b>
                 </div>
               </Link>
@@ -199,7 +199,7 @@ const Header = () => {
           </div>
           <div className="dropdown">
             <button className="dropdown-btn">
-              Important<i class="fa-regular fa-star"></i>
+              Important<i className="fa-regular fa-star"></i>
             </button>
             <div className="dropdown-content">
               {/* {recentProjects.length > 0 ? (
@@ -234,7 +234,7 @@ const Header = () => {
                     color: "orange",
                   }}
                 >
-                  <i class="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
                 </div>
               </Link>
               <Link
@@ -266,7 +266,7 @@ const Header = () => {
                     color: "maroon",
                   }}
                 >
-                  <i class="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
                 </div>
               </Link>
               {/* ))
