@@ -1,49 +1,17 @@
 import { useEffect, useState } from "react";
-import api from "../api/config";
 import { Link } from "react-router-dom";
-import ErrorPage from "./Error/ErrorPage";
 import { freezeWindow, getProjectIcon, getRandomColor, isColorLight, unfreezeWindow } from "../utils/utils";
-import avatarImg from "../img/avatar.png";
-
 import { formatDistanceToNowStrict } from "date-fns";
 
-import "../style/ProjectsLists.css";
-import CreateProject from "./modal/CreateProject";
-import { fr } from "date-fns/locale";
-import randomColor from "randomcolor";
+import api from "../api/config";
+import ErrorPage from "./Error/ErrorPage";
+import avatarImg from "../img/avatar.png";
 
-const predefinedColors = [
-  "#FF5733", // яскравий помаранчевий
-  "#33FF57", // яскравий зелений
-  "#3357FF", // насичений синій
-  "#FF33A1", // рожевий фуксія
-  "#FFD700", // золотий
-  "#00CED1", // темний бірюзовий
-  "#FF4500", // оранжево-червоний
-  "#32CD32", // лаймовий
-  "#8A2BE2", // синьо-фіолетовий
-  "#20B2AA", // світлий морський
-  "#FF6347", // томатний
-  "#4682B4", // стальний синій
-  "#DA70D6", // орхідея
-  "#5F9EA0", // сіро-блакитний
-  "#FFA07A", // світлий лососевий
-  "#7FFF00", // яскраво-зелений
-  "#FF69B4", // гарячий рожевий
-  "#CD5C5C", // індійський червоний
-  "#87CEEB", // небесно-блакитний
-  "#6B8E23", // оливково-зелений
-  "#FFB6C1", // світло-рожевий
-  "#8B0000", // темно-червоний
-  "#40E0D0", // бірюзовий
-  "#ADFF2F", // жовто-зелений
-  "#BA55D3", // середній пурпурний
-  "#FF8C00", // темний оранжевий
-  "#4169E1", // королівський синій
-  "#DAA520", // золотисто-коричневий
-  "#9932CC", // темний фіолетовий
-  "#F08080", // світло-кораловий
-];
+import CreateProject from "./modal/CreateProjectModal/CreateProject";
+
+import "../style/ProjectsLists.css";
+import { addImportant } from "../api/user";
+
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -53,21 +21,18 @@ const Projects = () => {
 
   const openModal = () => {
     freezeWindow();
-    setModalOpen(true);  
+    setModalOpen(true);
   }
   const closeModal = () => {
-    // document.forms["create-project-form"].reset();
     unfreezeWindow();
     setModalOpen(false);
   }
 
-  // Функція для отримання всіх проектів та їх кольорів
   const getProjects = async () => {
     try {
       const data = await api.get("/api/projects/");
       setProjects(data.data);
 
-      // Оновлюємо `usedColors` для унікальних кольорів
       const colors = data.data.map((project) => project.color);
       setUsedColors(new Set(colors));
     } catch (error) {
@@ -75,20 +40,15 @@ const Projects = () => {
     }
   };
 
-  // Функція для отримання випадкового доступного кольору
-/*   const getRandomColor = () => {
-    const availableColors = predefinedColors.filter(
-      (color) => !usedColors.has(color)
-    );
-    if (availableColors.length === 0) {
-      throw new Error("No available colors left.");
-    }
-    return availableColors[Math.floor(Math.random() * availableColors.length)];
-  }; */
-
   const handleCreateProject = () => {
     getProjects();
     window.location.reload();
+  };
+
+  const handleClickAddImportant = async (event, projectId) => {
+    event.preventDefault();
+    event.stopPropagation();
+    await addImportant(projectId);
   };
 
   useEffect(() => {
@@ -110,32 +70,32 @@ const Projects = () => {
   return (
     <>
       <div className="project-list">
+        <div
+          className="project-card project-card-new"
+          style={{ borderTopColor: `black` }}
+          onClick={openModal}
+        >
           <div
-            className="project-card project-card-new"
-            style={{ borderTopColor: `black` }}
-            onClick={openModal}
+            className="project-header"
+            style={{ backgroundColor: `black`, color: `white` }}
           >
-            <div
-              className="project-header"
-              style={{ backgroundColor: `black`, color: `white` }}
+            <span className="project-title">CREATE NEW PROJECT</span>
+            <span
+              className="project-type"
+              style={{ background: `white`, color: `black` }}
             >
-              <span className="project-title">CREATE NEW PROJECT</span>
-              <span
-                className="project-type"
-                style={{ background: `white`, color: `black` }}
-              >
-                <span className="project-type-icon">
-                  <i className="fa-regular fa-square-plus"></i>
-                </span>
+              <span className="project-type-icon">
+                <i className="fa-regular fa-square-plus"></i>
               </span>
-            </div>
-            <div className="project-body">
-              <span className="project-description">
-                <i className="fa-solid fa-plus"></i>
-              </span>
-            </div>
-            <div className="project-footer"></div>
+            </span>
           </div>
+          <div className="project-body">
+            <span className="project-description">
+              <i className="fa-solid fa-plus"></i>
+            </span>
+          </div>
+          <div className="project-footer"></div>
+        </div>
 
         {projects.map((project) => {
           const textColor = isColorLight(project.color) ? "#000" : "#fff";
@@ -150,6 +110,7 @@ const Projects = () => {
                   style={{ backgroundColor: project.color, color: textColor }}
                 >
                   <span className="project-title">{project.title}</span>
+
                   <span
                     className="project-type"
                     style={{ background: `#fff`, color: project.color }}
@@ -160,13 +121,18 @@ const Projects = () => {
                     <span className="last-modified">
                       last modified:
                       <br />
+
                       <span className="time">
                         {formatDistanceToNowStrict(new Date(project.updatedAt), {
                           addSuffix: true,
                         })}
                       </span>
                     </span>
+                    <span onClick={(event) => {
+                      handleClickAddImportant(event, project.id)
+                    }}> <i className="fa-regular fa-star"></i></span>
                   </span>
+
                 </div>
                 <div className="project-body">
                   <span className="project-description">
@@ -203,11 +169,11 @@ const Projects = () => {
           );
         })}
       </div>
-        <CreateProject 
-        isOpen={isModalOpen} 
+      <CreateProject
+        isOpen={isModalOpen}
         randColor={getRandomColor()}
         onClose={closeModal}
-        onSubmit={handleCreateProject}/>
+        onSubmit={handleCreateProject} />
     </>
   );
 };

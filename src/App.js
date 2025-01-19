@@ -12,6 +12,8 @@ import Project from "./components/project/Project";
 
 import { useEffect } from "react";
 import VerificationPage from "./page/auth/VerificationPage";
+import UserProfilePage from "./page/userProfile/UserProfilePage";
+import SettingsPage from "./page/settingsPage/SettingsPage";
 
 
 function App() {
@@ -35,17 +37,21 @@ function App() {
 
             <Route index element={<Main />} />
 
-            <Route path='/projects' element={<ProjectsPage/>} />
+            <Route path="/profile" element={<UserProfilePage />} />
+
+            <Route path='/projects' element={<ProjectsPage />} />
 
             <Route path="/board/:projectId" element={<Board />} />
 
-            <Route path="/project/:projectId" element={< Project/>} />
+            <Route path="/project/:projectId" element={< Project />} />
 
             <Route path="/login" element={<Auth />} />
 
             <Route path="/register" element={<RegisterPage />} />
 
             <Route path="/verification" element={<VerificationPage />} />
+
+            <Route path="/settings" element={<SettingsPage />} />
 
             <Route path="*" element={<div>Page not found</div>} />
 

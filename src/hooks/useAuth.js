@@ -17,7 +17,6 @@ export const AuthProvider = ({ children }) => {
             if (token) {
                 try {
                     const decodedToken = jwtDecode(token);
-                    console.log('Decoded token on mount:', decodedToken);
                     setUser(decodedToken);
                     setIsSignedIn(1);
                 } catch (error) {

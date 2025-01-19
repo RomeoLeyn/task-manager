@@ -16,7 +16,7 @@ export const Register = () => {
   const handleSubmitRegister = async (e) => {
     e.preventDefault();
     try {
-        await register(formRef.current.userName.value, formRef.current.firstName.value, formRef.current.lastName.value, formRef.current.email.value, formRef.current.password.value);
+        await register(formRef.current.userName.value, formRef.current.email.value, formRef.current.password.value);
         const token = localStorage.getItem("token");
         logined(token);
         navigate("/verification");

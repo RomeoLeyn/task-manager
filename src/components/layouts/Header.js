@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import "./Header.scss";
 
@@ -6,11 +7,32 @@ import { useNavigate } from "react-router-dom";
 import { getProjectIcon, isColorLight } from "../../utils/utils";
 import { useAuth } from "../../hooks/useAuth";
 import avatarUrl from "../../img/avatar.png";
+import { getImportant } from "../../api/user";
 
 const Header = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
-  
+
+  const [importantProjects, setImportantProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchImportantProjects = async () => {
+      try {
+        const response = getImportant();
+        const data = (await response).data;
+        console.log(data);
+        setImportantProjects(data);
+      } catch (error) {
+        console.error("Error fetching important projects:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchImportantProjects();
+  }, []);
+
   return (
     <header className="header">
       <nav className="navbar">
@@ -197,93 +219,65 @@ const Header = () => {
               )} */}
             </div>
           </div>
+
+
           <div className="dropdown">
             <button className="dropdown-btn">
-              Important<i className="fa-regular fa-star"></i>
+              Important <i className="fa-regular fa-star"></i>
             </button>
             <div className="dropdown-content">
-              {/* {recentProjects.length > 0 ? (
-                recentProjects.map((project) => ( */}
-              <Link
-                // to={`/project/${project.id}`}
-                // key={project.id}
-                className="dropdown-item"
-              >
-                <div
-                  className="dropdown-project-icon"
-                  style={{
-                    backgroundColor: `orange`,
-                    color: `${isColorLight("orange") ? "black" : "white"}`,
-                  }}
-                >
-                  {getProjectIcon("finance")}
-                </div>
-                <div className="dropdown-project-info">
-                  <span className="dropdown-project-title">
-                    Project Unique 2
-                  </span>
-                  <span className="dropdown-project-description">
-                    A short description for the project 2 gbdfkgn gdfngl ngf nd
-                    nfnj
-                  </span>
-                </div>
-                <div
-                  className="importance"
-                  style={{
-                    borderColor: `orange`,
-                    color: "orange",
-                  }}
-                >
-                  <i className="fa-solid fa-star"></i>
-                </div>
-              </Link>
-              <Link
-                // to={`/project/${project.id}`}
-                // key={project.id}
-                className="dropdown-item"
-              >
-                <div
-                  className="dropdown-project-icon"
-                  style={{
-                    backgroundColor: `maroon`,
-                    color: `${isColorLight("maroon") ? "black" : "white"}`,
-                  }}
-                >
-                  {getProjectIcon("innovation")}
-                </div>
-                <div className="dropdown-project-info">
-                  <span className="dropdown-project-title">
-                    Project Unique 4
-                  </span>
-                  <span className="dropdown-project-description">
-                    A short description for the project 4
-                  </span>
-                </div>
-                <div
-                  className="importance"
-                  style={{
-                    borderColor: `maroon`,
-                    color: "maroon",
-                  }}
-                >
-                  <i className="fa-solid fa-star"></i>
-                </div>
-              </Link>
-              {/* ))
+              {loading ? (
+                <span>Loading...</span>
+              ) : importantProjects.length > 0 ? (
+                importantProjects.map((project) => (
+                  <Link
+                    to={`/project/${project.projectId}`}
+                    key={project.id}
+                    className="dropdown-item"
+                  >
+                    <div
+                      className="dropdown-project-icon"
+                      style={{
+                        backgroundColor: project.project.color || "gray",
+                        color: `${isColorLight(project.project.color || "gray") ? "black" : "white"}`,
+                      }}
+                    >
+                      {getProjectIcon(project.project.category)}
+                    </div>
+                    <div className="dropdown-project-info">
+                      <span className="dropdown-project-title">{project.project.title}</span>
+                      <span className="dropdown-project-description">
+                        {project.description || "No description available"}
+                      </span>
+                    </div>
+                    <div
+                      className="importance"
+                      style={{
+                        borderColor: project.color || "gray",
+                        color: project.color || "gray",
+                      }}
+                    >
+                      <i className="fa-solid fa-star"></i>
+                    </div>
+                  </Link>
+                ))
               ) : (
-                <span className="no-projects">No recent projects</span>
-              )} */}
+                <span className="no-projects">No important projects</span>
+              )}
             </div>
           </div>
-{/*           <button className="header-create" onClick={() => navigate("/login")}>
+
+          {/*           <button className="header-create" onClick={() => navigate("/login")}>
             Create
             <i className="fa-solid fa-folder-plus"></i>
           </button> */}
         </div>
+
+
         <div className="nav-end">
           <div className="nav-tools">
             <button className="navbar-btn header-search">
-            <i className="fa-solid fa-magnifying-glass"></i>
+              <i className="fa-solid fa-magnifying-glass"></i>
             </button>
             <button className="navbar-btn header-notifications">
               <i className="fa-regular fa-bell"></i>
@@ -292,7 +286,7 @@ const Header = () => {
               <i className="fa-regular fa-circle-question"></i>
             </button>
             <button className="navbar-btn header-settings">
-            <i className="fa-solid fa-gear"></i>
+              <Link to="/settings"> <i className="fa-solid fa-gear"></i></Link>
             </button>
           </div>
           {
@@ -308,15 +302,15 @@ const Header = () => {
                 onClick={() => navigate("/profile")}
               >
                 <span className="user-name">{user ? user.username : "Anonymous"}</span>
-                <div 
-                className="user-image" 
-                style={{ backgroundImage: `url(${user?.avatarUrl || avatarUrl})` }}></div>
+                <div
+                  className="user-image"
+                  style={{ backgroundImage: `url(${user?.avatarUrl || avatarUrl})` }}></div>
               </button>
             </div>
           }
         </div>
       </nav>
-    </header>
+    </header >
   );
 };
 

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+
+import { createProject } from "../../../api/projects";
+import { getRandomColor } from "../../../utils/utils";
+
 import "./Modal.scss";
-import { createProject } from "../../api/projects";
-import Input from "./Input";
-import { getRandomColor } from "../../utils/utils";
 
 const CreateProject = ({ isOpen, onClose, onSubmit, randColor }) => {
   const [formData, setFormData] = useState({
@@ -21,7 +22,6 @@ const CreateProject = ({ isOpen, onClose, onSubmit, randColor }) => {
     setFormData({ title: "", description: "", category: "", color: "#ffffff" });
     createProject(formData.title, formData.description, formData.category, formData.color);
     onClose();
-    // window.location.reload();
   };
 
   if (!isOpen) return null; 
@@ -48,7 +48,6 @@ const CreateProject = ({ isOpen, onClose, onSubmit, randColor }) => {
               required
             />
           </label>
-          {/* <Input placeholder="Enter title" name="title" label="Title" value={formData.title} /> */}
           <label className="input-container required">
             Description:
             <textarea
