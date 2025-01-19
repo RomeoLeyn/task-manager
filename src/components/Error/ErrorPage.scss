@@ -1,0 +1,177 @@
+@mixin slide-in($direction) {
+    position: relative;
+    animation: slideIn 0.5s ease forwards;
+    @if $direction == top {
+      --direction: translateY(-100%);
+    }
+    @else if $direction == bottom {
+      --direction: translateY(100%);
+    }
+    @else if $direction == left {
+      --direction: translateX(-50%);
+    }
+    @else if $direction == right {
+      --direction: translateX(50%);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: var(--direction);
+      opacity: 0;
+    }
+    to {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+  }
+
+/* body {
+  overflow-y: hidden;
+} */
+
+.error-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+    /* Можна додати додатковий z-index, якщо потрібно, щоб перекрити інші елементи */
+  }
+  
+  .error-container {
+    display: flex;
+    position: relative;
+    width: 75%;
+    align-items: stretch;
+    color: #333;
+    text-align: center;
+    border-radius: 5px;
+    gap: 0.5rem;
+    overflow: hidden;
+    z-index: 100;
+    /* Фоновий колір: #E3F6FF або змінна primary */
+    /* background-color: #E3F6FF; */
+    /* Відступи */
+  }
+  
+  .error-status {
+    color: var(--primary, black);
+    position: absolute;
+    top: 42.5%;
+    border-radius: 0 10% 10% 0;
+    padding-inline: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary, black);
+    z-index: 101;
+    transform: translateX(-100%);
+    animation: slideStatus 0.5s ease forwards 0.5s;
+
+    @keyframes slideStatus {
+        from {
+            transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    /* Попереднє значення top та left */
+    /* top: -6%; */
+    /* left: -4.5%; */
+  }
+  
+  .error-status span {
+    font-size: 50pt;
+    font-weight: bold;
+    color: #E3F6FF;
+  }
+  
+  .error-image {
+    position: relative;
+    // right: -50%;
+    width: 60%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    // transition: right 0.5s linear;
+    // animation: move 0.5s linear;
+    @include slide-in(right);
+
+    img {
+        width: 125%;
+        height: auto;
+        pointer-events: none;
+        user-select: none;
+    }
+  }
+
+  .error-section {
+    font-family: "Sofia Sans", sans-serif;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /* background-color: var(--primary); */
+  }
+  
+  .error-title {
+    position: relative;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E3F6FF;
+    border-radius: 5px;
+    @include slide-in(top);
+
+    h1 {
+        margin: 0;
+        font-size: 40pt;
+        font-weight: bold;
+        color: var(--primary, black);
+    }
+  }
+  
+  .error-interaction {
+    position: relative;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #E3F6FF;
+    align-items: center;
+    border-radius: 5px;
+    @include slide-in(bottom);
+  }
+  
+  .error-message {
+    font-size: 18pt;
+    margin: 10px 0;
+  }
+  
+  .error-link {
+    text-decoration: none;
+    display: inline;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background-color: var(--primary, black);
+    width: fit-content;
+    margin-inline: auto;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  
+    &:hover {
+      background-color: var(--black);
+      color: white;
+    }
+  }
+  

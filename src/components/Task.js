@@ -1,40 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { getTaskPriorityColor } from '../utils/utils';
+import { getDetailsTask } from '../api/task';
+
+import TaskDetailsModal from './modal/TaskDetailsModal/TaskDetailsModal';
+
+import avatarImg from "../img/avatar.png";
 
 import '../style/Task.css';
 
-export const Task = ({ title, description, user }) => {
+export const Task = ({ id, title, createdByUser, assignedUser, priority }) => {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [task, setTask] = useState({});
 
 
     const handleClickAssigneToMe = () => {
-        
+
     }
 
     const handleClickChangeStatus = () => {
         console.log("Change status");
     }
 
+    const handleClickGetTaskDetails = async () => {
+        setIsModalOpen(true)
+        const response = await getDetailsTask(id);
+        setTask(response.data);
+    }
+
     return (
-        <div className='task-container'>
-
+        <div onClick={handleClickGetTaskDetails} className='task-container'>
             <div className='task-title'>
-                <p> <strong>{title}</strong> </p>
+                {title}
             </div>
-
-            <div className="task-card">
-
-                <p><strong>Task description:</strong> {description}</p>
-                <p><strong>Assigned to:</strong> {user}</p>
-            </div>
-
-            <div className='buttons'>
-                <div className='assigned-btn'>
-                    <button onClick={handleClickAssigneToMe}>assigned to me</button>
-                </div>
-                <div className='change-status-btn'>
-                    <button onClick={handleClickChangeStatus}>change status</button>
+            <div className='task-users'>
+                <div className='assigned-user'>
+                    <span>Assigned to:</span>
+                    {assignedUser ? (
+                        <>
+                            <img className='assigned-user-avatar' src={avatarImg} alt="avatar" />
+                            <span>{assignedUser.username}</span>
+                        </>
+                    ) : (
+                        <span>Unassigned</span>
+                    )}
                 </div>
             </div>
 
+            <TaskDetailsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} taskDetails={task} />
         </div>
     );
 };

@@ -1,16 +1,21 @@
-import { Outlet, Link } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 
 import "./Layout.css"
-import Header from "../Header"
+import Header from "./Header"
 import Footer from "../Footer"
+import { useAuth } from "../../hooks/useAuth"
+import DefaultHeader from "./DefaultHeader"
 
 export const LayoutComponent = () => {
+    const { user } = useAuth();
+    
     return (
         <>
             <div className="layout-container">
-                <Header />
+                {user !== null ?<Header /> : <DefaultHeader /> }
                 <div className="content"> <Outlet /> </div>
-                <Footer />
+                {/* {user !== null ? <Footer /> : null} */}
+                {user !== null ? null : <Footer />} 
             </div>
         </>
     )

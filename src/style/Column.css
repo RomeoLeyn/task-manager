@@ -1,3 +1,51 @@
-.task {
-    border-radius: 10px solid black;
+.column {
+    background-color: #ebecf0;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.column-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    font-size: 16pt;
+    font-weight: bold;
+    margin-block: 0 0.5rem;
+    color: #172b4d;
+}
+
+.column-body {
+    border-top: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+    display: flex;
+    flex-direction: column;
+    /* gap: 0.5rem; */
+}
+
+.column-footer {
+    padding-block-start: 0.5rem;
+}
+
+.column-footer button {
+    border-radius: calc(8px - 1px);
+    width: 100%;
+    padding-block: 0.5rem;
+    border: none;
+    text-align: left;
+    font-size: 12pt;
+    font-family: "Sofia Sans", sans-serif;
+    transition: 0.25s ease;
+    display: flex;
+    align-items: center;
+}
+
+.column-footer button i {
+    margin-inline: 0.25rem 0.5rem;
+    font-size: 14pt;
+}
+
+.column-footer button:hover {
+    cursor: pointer;
+    background-color: var(--gray);
 }

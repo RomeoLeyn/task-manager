@@ -3,7 +3,7 @@ import '../style/Footer.css';
 const Footer = () => {
     return (
         <footer className="footer">
-            <p>© 2024 MyApp. All rights reserved.</p>
+            <p>© 2024 BoardMaster. All rights reserved.</p>
         </footer>
     );
 }
